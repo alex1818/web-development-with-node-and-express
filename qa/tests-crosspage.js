@@ -14,7 +14,7 @@ suite('Cross-Page Tests', function(){
 		var referrer = 'http://localhost:3000/tours/hood-river';
 		browser.visit(referrer, function(){
 			browser.clickLink('.requestGroupRate', function(){
-				assert(browser.field('referrer').value === referrer);
+				assert(browser.field('referrer').value === referrer, "Referrer field not populating correctly");
 				done();
 			});
 		});
@@ -31,7 +31,7 @@ suite('Cross-Page Tests', function(){
 		});
 	});
 
-	test('visiting the "request group rate" page dirctly should result ' +
+	test('visiting the "request group rate" page directly should result ' +
 			'in an empty value for the referrer field', function(done){
 		browser.visit('http://localhost:3000/tours/request-group-rate', function(){
 			assert(browser.field('referrer').value === '');
